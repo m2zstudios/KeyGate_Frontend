@@ -3,7 +3,7 @@ import { cacheGet, cacheSet, cacheBust, setCacheScope } from '../lib/cache';
 import { useAuth } from './AuthContext';
 
 const CTX = createContext(null);
-export const useKeyGate = () => useContext(CTX);
+export const useLethem = () => useContext(CTX);
 
 const API = import.meta.env.VITE_API_URL || 'https://keygate-backend.onrender.com';
 export const fmtNum = (n) => (n >= 1_000_000 ? `${(n / 1_000_000).toFixed(1)}M` : n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n || 0));
@@ -13,7 +13,7 @@ export const quotaColor = (used, limit) => (((used / limit) * 100 > 90) ? 'over'
 export const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 export const VALID_PAGES = ['overview', 'masterkeys', 'subkeys', 'logs', 'demo', 'health', 'notifications'];
 
-export default function KeyGateProvider({ children, projectSlug, page }) {
+export default function LethemProvider({ children, projectSlug, page }) {
   const { getAccessToken, isAuthenticated, user } = useAuth();
   const [projects, setProjects] = useState([]);
   const [projectName, setProjectName] = useState('');
